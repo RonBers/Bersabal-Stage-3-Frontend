@@ -1,12 +1,16 @@
 // Initial page
 let page = 1
-let isDarkMode = false
 
 const loadMore = document.getElementById("loadmore-btn")
 loadMore.addEventListener("click", () => {
   page++
   fetchData()
 })
+
+let isDarkMode = false
+const darkModeBtn = document.getElementById("darkmode-toggle-btn")
+const darkModeBG = "resources/img/darkModeBG.JPG"
+const lightModeBG = "resources/img/lightModeBG.JPG"
 
 async function fetchData() {
   try {
@@ -26,7 +30,9 @@ async function fetchData() {
           isDarkMode ? "darkmode" : ""
         }" id="custom-card">
           <div class="card-header">
-            <img src="resources/img/lightModeBG.jpg" alt="" class="user-bg" id="user-bg" />
+            <img src="${
+              isDarkMode ? darkModeBG : lightModeBG
+            }" alt="" class="user-bg" id="user-bg" />
           </div>
           <img src="${user.avatar}" alt="" class="avatar" id="avatar" />
           <div class="card-body" id="card-body">
@@ -61,11 +67,7 @@ async function fetchData() {
 // Initial fetch
 fetchData()
 
-// Dark mode
-const darkModeBtn = document.getElementById("darkmode-toggle-btn")
-const darkModeBG = "resources/img/darkModeBG.JPG"
-const lightModeBG = "resources/img/lightModeBG.JPG"
-
+// Dark mode settings
 darkModeBtn.addEventListener("click", () => {
   document.body.classList.toggle("darkmode")
 

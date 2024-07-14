@@ -11,12 +11,11 @@ body {
   width: 100%;
   transition: all 0.5s ease;
   font-family: Inter, fallback, serif;
-  overflow: scroll;
-  background: #f1f1f1;
+  overflow: hidden;
 }
 
-html > .darkmode,
-body > .darkmode {
+html.darkmode,
+body.darkmode {
   background: #131621;
 }
 
@@ -25,20 +24,23 @@ body > .darkmode {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  height: fit-content;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
   transition: all 0.5s ease;
-  overflow: scroll;
+  margin-left: 22px;
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  width: fit-content;
-  height: 100%;
-  max-width: 80%;
-  transform: scale(0.8);
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.5s ease;
+  margin: auto auto;
 }
 
 /* Custom Toggle Switch styling */
@@ -86,26 +88,26 @@ input:checked + .toggle-track + .toggle-thumb {
 input:focus + .toggle-track {
   box-shadow: 0 0 1px #ffc777;
 }
+
 /* Card Styling */
 #custom-card {
   background: #fff;
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: start;
   align-items: center;
   width: 290px;
   height: 350px;
   border-radius: 15px;
   box-shadow: 1px 5px 10px 0px rgb(200, 200, 200);
   transition: all 0.5s ease;
-  flex-wrap: wrap;
   overflow: hidden;
-  padding: 0px 0px;
 }
 
 #custom-card > .card-header {
   position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 #custom-card > .card-body {
@@ -115,18 +117,15 @@ input:focus + .toggle-track {
   justify-content: center;
   align-items: center;
   top: 33%;
-  border-radius: 20px 20px 0 0;
-  background: #fff;
   width: 100%;
   height: 67%;
   padding-top: 10px;
+  background: #fff;
   font-weight: 800;
   transition: all 0.5s ease;
-  font-family: Inter;
 }
 
 #custom-card > .card-body h1 {
-  font-family: Inter;
   font-size: 30px;
 }
 
@@ -140,7 +139,6 @@ input:focus + .toggle-track {
 }
 
 #custom-card > .card-body > .user-email a {
-  font-family: Inter;
   font-size: 18px;
   font-weight: 800;
   text-decoration: none;
@@ -164,16 +162,13 @@ input:focus + .toggle-track {
 }
 
 #custom-card > .card-body > .user-id h3 {
-  font-family: Inter;
   font-size: 14px;
 }
 
 #custom-card > .card-header > .user-bg {
   width: 100%;
   height: 200px;
-  position: block;
-  border-radius: 15px 15px 0px 0px;
-  top: 0%;
+  border-radius: 15px 15px 0 0;
 }
 
 #custom-card > .avatar {
@@ -211,82 +206,25 @@ input:focus + .toggle-track {
 }
 
 @media (max-width: 1034px) {
-  .container {
-    overflow: scroll;
-  }
-
   .card-container {
-    position: absolute;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-row: auto;
-    gap: 10px;
-    width: fit-content;
-    height: fit-content;
-    max-width: 80%;
-    overflow: scroll;
-  }
-  .container.darkmode {
-    background: #131621;
+    margin-top: 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    overflow: scroll;
-  }
-
   .card-container {
-    position: absolute;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-row: auto;
-    gap: 10px;
-    width: fit-content;
-    height: fit-content;
-    max-width: 80%;
-    overflow: scroll;
-    transform: scale(0.8);
   }
 }
 
-@media (max-width: 690px) {
-  .container {
-    overflow-y: scroll;
-  }
-
+@media (max-width: 500px) {
   .card-container {
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-row: auto;
-    gap: 10px;
-    width: fit-content;
-    max-width: 80%;
-    overflow: scroll;
-    transform: scale(0.8);
-  }
-}
-
-@media (max-width: 414px) {
-  .container {
-    overflow-y: scroll;
-  }
-
-  .card-container {
-    position: absolute;
-    display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    grid-row: auto;
-    width: 100%;
-    max-width: 80%;
-    overflow: scroll;
-    transform: scale(0.6);
   }
 }
 
-/* navbar */
-
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: start;
@@ -313,3 +251,5 @@ input:focus + .toggle-track {
 .loadmore:disabled {
   background: #d9d9d9;
 }
+
+/* Nice try self */
