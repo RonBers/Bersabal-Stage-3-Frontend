@@ -1,4 +1,4 @@
-//Initial page
+// Initial page
 let page = 1
 let isDarkMode = false
 
@@ -18,7 +18,7 @@ async function fetchData() {
     // Containers for cards
     const cardContainer = document.getElementById("card-container")
 
-    // Map through users to generate card content
+    // Mapping through users to generate card content
     const customCardContent = users.data
       .map((user) => {
         return `
@@ -67,14 +67,14 @@ const darkModeBG = "resources/img/darkModeBG.JPG"
 const lightModeBG = "resources/img/lightModeBG.JPG"
 
 darkModeBtn.addEventListener("click", () => {
-  document.getElementById("container").classList.toggle("darkmode")
+  document.body.classList.toggle("darkmode")
 
   const customCards = document.querySelectorAll("#custom-card")
   customCards.forEach((card) => {
     card.classList.toggle("darkmode")
   })
 
-  const userBGS = document.querySelectorAll("user-bg")
+  const userBGS = document.querySelectorAll(".user-bg")
   userBGS.forEach((userBG) => {
     userBG.src = isDarkMode ? lightModeBG : darkModeBG
   })

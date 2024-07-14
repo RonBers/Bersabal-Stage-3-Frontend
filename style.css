@@ -12,13 +12,17 @@ body {
   transition: all 0.5s ease;
   font-family: Inter, fallback, serif;
   overflow: scroll;
+  background: #f1f1f1;
+}
+
+html > .darkmode,
+body > .darkmode {
+  background: #131621;
 }
 
 .container {
-  background: #f1f1f1;
   display: flex;
   flex-direction: column;
-  gap: 50px;
   justify-content: start;
   align-items: center;
   height: fit-content;
@@ -27,16 +31,12 @@ body {
   overflow: scroll;
 }
 
-.container.darkmode {
-  background: #131621;
-}
-
 .card-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   width: fit-content;
-  height: fit-content;
+  height: 100%;
   max-width: 80%;
   transform: scale(0.8);
 }
@@ -276,10 +276,9 @@ input:focus + .toggle-track {
   .card-container {
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 10px;
-    width: fit-content;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-row: auto;
+    width: 100%;
     max-width: 80%;
     overflow: scroll;
     transform: scale(0.6);
@@ -313,8 +312,4 @@ input:focus + .toggle-track {
 
 .loadmore:disabled {
   background: #d9d9d9;
-}
-
-.container.darkmode {
-  background: #131621;
 }
